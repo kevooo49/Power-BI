@@ -1,0 +1,71 @@
+table F_ImprezaEfekt
+	lineageTag: 78b7e11f-5b0a-4a90-9528-fe1b7f6679af
+
+	column EventID
+		dataType: int64
+		formatString: 0
+		lineageTag: ed44f3ed-7477-4bcb-93a1-6ce78439347e
+		summarizeBy: none
+		sourceColumn: EventID
+
+		annotation SummarizationSetBy = Automatic
+
+	column rel_hour
+		dataType: int64
+		formatString: 0
+		lineageTag: 6ca4073f-4156-4ea5-b441-18add2b8406d
+		summarizeBy: sum
+		sourceColumn: rel_hour
+
+		annotation SummarizationSetBy = Automatic
+
+	column avg_bikes_event
+		dataType: double
+		lineageTag: 25c1a680-8676-4076-9e9f-9d43806f5405
+		summarizeBy: sum
+		sourceColumn: avg_bikes_event
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column avg_bikes_control
+		dataType: double
+		lineageTag: 69a416d3-fe05-479b-842e-1a9a058b3cd9
+		summarizeBy: sum
+		sourceColumn: avg_bikes_control
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column stations
+		dataType: int64
+		formatString: 0
+		lineageTag: f04e379c-873a-4022-91f3-9dd10f2f1c96
+		summarizeBy: sum
+		sourceColumn: stations
+
+		annotation SummarizationSetBy = Automatic
+
+	column control_shift_days
+		dataType: int64
+		formatString: 0
+		lineageTag: 04999e6e-73f5-4a49-b461-19c738615566
+		summarizeBy: sum
+		sourceColumn: control_shift_days
+
+		annotation SummarizationSetBy = Automatic
+
+	partition F_ImprezaEfekt = m
+		mode: import
+		source =
+				let
+				    Źródło = Parquet.Document(File.Contents("C:\Users\micro\Desktop\Projekt_Veturilo_PowerBI\dane\model\F_ImprezaEfekt.parquet"), [Compression=null, MaxDepth=null])
+				in
+				    Źródło
+
+	annotation PBI_NavigationStepName = Nawigacja
+
+	annotation PBI_ResultType = Table
+

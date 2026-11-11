@@ -1,0 +1,409 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 1700.2195432365377,
+        "y": 89.069855980733351
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 123.16680511652493,
+            "y": 710.65846929449469
+          },
+          "nodeIndex": "B_LokalizacjaStacja",
+          "nodeLineageTag": "796e0191-1604-40cf-9eb6-cc08e3dfb833",
+          "size": {
+            "height": 188.6968382379381,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 102.04903789604271,
+            "y": 517.5105249072169
+          },
+          "nodeIndex": "D_Komorka",
+          "nodeLineageTag": "41a7bc99-c06a-4467-ae1e-1f713a2be657",
+          "size": {
+            "height": 174.79329879859415,
+            "width": 234
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 674.37133169154424,
+            "y": 998.98076308999623
+          },
+          "nodeIndex": "D_Lokalizacja",
+          "nodeLineageTag": "7a7a04bc-6cb0-42ea-be8b-44c0964fe564",
+          "size": {
+            "height": 235.09051471381463,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 1129.1253115121813,
+            "y": 646.275821165402
+          },
+          "nodeIndex": "D_Stacja",
+          "nodeLineageTag": "3d852915-d257-4bce-ae67-ae635776e9ac",
+          "size": {
+            "height": 536.99594253956911,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 758.101847937935,
+            "y": 453.1278767781244
+          },
+          "nodeIndex": "F_Alokacja",
+          "nodeLineageTag": "5609e5f7-9801-4c96-b823-7b926b173e3e",
+          "size": {
+            "height": 243.65332030672187,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 1484.3826481290926,
+            "y": 483.91957805725559
+          },
+          "nodeIndex": "F_Budzet",
+          "nodeLineageTag": "ec0d22da-4b6a-483a-90e7-26cbc36a2bb1",
+          "size": {
+            "height": 189.40745655597004,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 1410.0792150628383,
+            "y": 836.62451998184974
+          },
+          "nodeIndex": "F_ImprezaEfekt",
+          "nodeLineageTag": "78b7e11f-5b0a-4a90-9528-fe1b7f6679af",
+          "size": {
+            "height": 270.84247327212745,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 1226.6052047342096,
+            "y": 198.39652983258421
+          },
+          "nodeIndex": "F_Imprezy",
+          "nodeLineageTag": "17ae0c61-15b5-4838-ac23-eea057981b22",
+          "size": {
+            "height": 384.0570087067855,
+            "width": 234
+          },
+          "zIndex": 11
+        },
+        {
+          "location": {
+            "x": 1777.8709349793307,
+            "y": 269.28338316906741
+          },
+          "nodeIndex": "F_Pogoda",
+          "nodeLineageTag": "3c376543-0b25-4fb5-ae34-ef4c7d1c42fb",
+          "size": {
+            "height": 278.78735295175261,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 2185.3767386315781,
+            "y": 402.76262658551792
+          },
+          "nodeIndex": "F_StanStacji",
+          "nodeLineageTag": "d384fdd4-1af4-4130-aa51-feaae0c8bb9e",
+          "size": {
+            "height": 463.50580550303664,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 1800.3601907223867,
+            "y": 859.01848454849062
+          },
+          "nodeIndex": "F_Symulacja",
+          "nodeLineageTag": "516bdc6f-7685-428a-9d91-24b6f68939f0",
+          "size": {
+            "height": 256.22831551475178,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 2456.1156890115849,
+            "y": 551.81241424180962
+          },
+          "nodeIndex": "F_Przejazdy",
+          "nodeLineageTag": "7d89d2ed-e700-4beb-9433-2b02b165eed5",
+          "size": {
+            "height": 239.46132812268877,
+            "width": 234
+          },
+          "zIndex": 12
+        },
+        {
+          "location": {
+            "x": 2578.8746589315092,
+            "y": 344.84435919599406
+          },
+          "nodeIndex": "D_Data",
+          "nodeLineageTag": "c7c34970-a7a0-4545-9a3d-c29178d8effd",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 13
+        },
+        {
+          "location": {
+            "x": 2760.8256210354666,
+            "y": 483.96955059647473
+          },
+          "nodeIndex": "D_Godzina",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {},
+          "nodeIndex": "_Miary",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Wszystkie tabele",
+      "zoomValue": 70.955543900969374,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 1,
+      "scrollPosition": {
+        "x": 120.20282846244369,
+        "y": 56.667047703723455
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 835.26725345855732,
+            "y": 803.02976708366577
+          },
+          "nodeIndex": "B_LokalizacjaStacja",
+          "nodeLineageTag": "796e0191-1604-40cf-9eb6-cc08e3dfb833",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 835.80701542667657,
+            "y": 300.65505423049012
+          },
+          "nodeIndex": "D_Data",
+          "nodeLineageTag": "c7c34970-a7a0-4545-9a3d-c29178d8effd",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 158.51032806019111,
+            "y": 70.587786898692684
+          },
+          "nodeIndex": "D_Godzina",
+          "nodeLineageTag": "78f55886-98f5-4123-9678-5d2b0801e62a",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 548.80948266145083,
+            "y": 603.375083148585
+          },
+          "nodeIndex": "D_Komorka",
+          "nodeLineageTag": "41a7bc99-c06a-4467-ae1e-1f713a2be657",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1122.3719698023765,
+            "y": 652.62305361942879
+          },
+          "nodeIndex": "D_Lokalizacja",
+          "nodeLineageTag": "7a7a04bc-6cb0-42ea-be8b-44c0964fe564",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 386.22656365480179,
+            "y": 808.339551072545
+          },
+          "nodeIndex": "D_Stacja",
+          "nodeLineageTag": "3d852915-d257-4bce-ae67-ae635776e9ac",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 383.99096793768257,
+            "y": 1261.37380759172
+          },
+          "nodeIndex": "F_Alokacja",
+          "nodeLineageTag": "5609e5f7-9801-4c96-b823-7b926b173e3e",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1681.9917376318517,
+            "y": 655.68690379586
+          },
+          "nodeIndex": "F_Budzet",
+          "nodeLineageTag": "ec0d22da-4b6a-483a-90e7-26cbc36a2bb1",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1447.9917376318519,
+            "y": 391.37154821439231
+          },
+          "nodeIndex": "F_ImprezaEfekt",
+          "nodeLineageTag": "78b7e11f-5b0a-4a90-9528-fe1b7f6679af",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1161.9884708621707,
+            "y": 299.23385134724379
+          },
+          "nodeIndex": "F_Imprezy",
+          "nodeLineageTag": "17ae0c61-15b5-4838-ac23-eea057981b22",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 487.74075828966619,
+            "y": -50
+          },
+          "nodeIndex": "F_Pogoda",
+          "nodeLineageTag": "3c376543-0b25-4fb5-ae34-ef4c7d1c42fb",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 456.87734561025582
+          },
+          "nodeIndex": "F_Przejazdy",
+          "nodeLineageTag": "7d89d2ed-e700-4beb-9433-2b02b165eed5",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 336.93236226500096,
+            "y": 251.41634032602497
+          },
+          "nodeIndex": "F_StanStacji",
+          "nodeLineageTag": "d384fdd4-1af4-4130-aa51-feaae0c8bb9e",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 99.121953888392227,
+            "y": 984.83728407951594
+          },
+          "nodeIndex": "F_Symulacja",
+          "nodeLineageTag": "516bdc6f-7685-428a-9d91-24b6f68939f0",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Układ 1",
+      "zoomValue": 58.234902535484743,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Układ 1",
+  "defaultDiagram": "Wszystkie tabele"
+}

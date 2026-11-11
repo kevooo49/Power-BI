@@ -1,0 +1,89 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "22561f671c58cadb8292",
+  "position": {
+    "x": 0,
+    "y": 540,
+    "z": 12000,
+    "height": 540,
+    "width": 728.33333333333337,
+    "tabOrder": 12000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "D_Data"
+                    }
+                  },
+                  "Property": "Tydzien"
+                }
+              },
+              "queryRef": "D_Data.Tydzien",
+              "nativeQueryRef": "Suma elementów Tydzien",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Miary"
+                    }
+                  },
+                  "Property": "KPI1 Pusta rano top20 %"
+                }
+              },
+              "queryRef": "_Miary.KPI1 Pusta rano top20 %",
+              "nativeQueryRef": "KPI1 Pusta rano top20 %"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Miary"
+                    }
+                  },
+                  "Property": "Cel KPI1"
+                }
+              },
+              "queryRef": "_Miary.Cel KPI1",
+              "nativeQueryRef": "Cel KPI1"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Miary"
+                  }
+                },
+                "Property": "KPI1 Pusta rano top20 %"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

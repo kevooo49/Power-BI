@@ -1,0 +1,82 @@
+table F_Pogoda
+	lineageTag: 3c376543-0b25-4fb5-ae34-ef4c7d1c42fb
+
+	column CellID
+		dataType: int64
+		formatString: 0
+		lineageTag: d7ea79d3-8046-49fb-a257-c666bba0ddd1
+		summarizeBy: none
+		sourceColumn: CellID
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d70e3bd5-d15a-4671-b3dd-25b3e7ba4ad0
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column hour
+		dataType: int64
+		formatString: 0
+		lineageTag: 1cf45cae-6fd3-47ca-ad3a-d687286aa40b
+		summarizeBy: none
+		sourceColumn: hour
+
+		annotation SummarizationSetBy = Automatic
+
+	column temp
+		dataType: double
+		lineageTag: 847b47d8-b11e-4fe4-ae07-30b98bb2b651
+		summarizeBy: sum
+		sourceColumn: temp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column precip
+		dataType: double
+		lineageTag: 66aec319-6108-4451-b73f-0c82e2c55f67
+		summarizeBy: sum
+		sourceColumn: precip
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column wind
+		dataType: double
+		lineageTag: 1792889d-5bad-4ceb-9d20-84f7f20f783d
+		summarizeBy: sum
+		sourceColumn: wind
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cond
+		dataType: string
+		lineageTag: 299eb255-16bd-40fa-990c-f48b5f1854b3
+		summarizeBy: none
+		sourceColumn: cond
+
+		annotation SummarizationSetBy = Automatic
+
+	partition F_Pogoda = m
+		mode: import
+		source =
+				let
+				    Źródło = Parquet.Document(File.Contents("C:\Users\micro\Desktop\Projekt_Veturilo_PowerBI\dane\model\F_Pogoda.parquet"), [Compression=null, MaxDepth=null])
+				in
+				    Źródło
+
+	annotation PBI_NavigationStepName = Nawigacja
+
+	annotation PBI_ResultType = Table
+

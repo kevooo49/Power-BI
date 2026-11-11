@@ -1,0 +1,44 @@
+table F_Budzet
+	lineageTag: ec0d22da-4b6a-483a-90e7-26cbc36a2bb1
+
+	column budget
+		dataType: int64
+		formatString: 0
+		lineageTag: ed57afbc-6780-4a45-9e1c-837ea74e68bc
+		summarizeBy: sum
+		sourceColumn: budget
+
+		annotation SummarizationSetBy = Automatic
+
+	column empty_h_sim
+		dataType: double
+		lineageTag: d1bc4274-5f54-4ad6-ac76-b96e29f057fe
+		summarizeBy: sum
+		sourceColumn: empty_h_sim
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column reduction_vs_sim0
+		dataType: double
+		lineageTag: 42d0f450-bd62-4b6b-a03a-500e8daf68a6
+		summarizeBy: sum
+		sourceColumn: reduction_vs_sim0
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition F_Budzet = m
+		mode: import
+		source =
+				let
+				    Źródło = Parquet.Document(File.Contents("C:\Users\micro\Desktop\Projekt_Veturilo_PowerBI\dane\model\F_Budzet.parquet"), [Compression=null, MaxDepth=null])
+				in
+				    Źródło
+
+	annotation PBI_NavigationStepName = Nawigacja
+
+	annotation PBI_ResultType = Table
+

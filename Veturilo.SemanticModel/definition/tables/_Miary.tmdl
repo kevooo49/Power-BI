@@ -1,0 +1,136 @@
+table _Miary
+	lineageTag: 71de0987-7205-4d09-aae9-7b7886b48475
+
+	measure Sloty = SUM ( F_StanStacji[slots] )
+		formatString: 0
+		lineageTag: 0938aecc-180f-44de-9401-45d59594b5ef
+
+	measure 'Sloty puste' = SUM ( F_StanStacji[empty_slots] )
+		formatString: 0
+		lineageTag: a1b3745c-54b8-4217-9ba1-3aef5e0a0765
+
+	measure 'Czas pustej %' = DIVIDE ( [Sloty puste], [Sloty] )
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 174195c5-baf3-4fe2-a630-dbe9f2f2d3e4
+
+	measure 'Godziny pustej' = [Sloty puste] * 5 / 60
+		lineageTag: 8190d70e-c2d5-48df-a7fa-ed36e49a0289
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'KPI1 Pusta rano top20 %' =
+			
+			CALCULATE ( [Czas pustej %], D_Data[CzyRoboczy] = TRUE (), D_Godzina[Okno] = "Rano 6–10", D_Stacja[is_top20] = TRUE () )
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 684bc429-103e-43a0-ba33-a3643289c675
+
+	measure 'KPI2 Godziny pustej top20 na dzien' =
+			
+			CALCULATE (
+			    DIVIDE ( [Godziny pustej], DISTINCTCOUNT ( F_StanStacji[date] ) ),
+			    D_Data[CzyRoboczy] = TRUE (), D_Godzina[Okno] = "Rano 6–10", D_Stacja[is_top20] = TRUE () )
+		lineageTag: 65028628-e858-4e4d-b532-ae06e84d39ce
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'KPI3 Koncentracja 15% stacji' =
+			
+			VAR t = ADDCOLUMNS (
+			    FILTER ( VALUES ( D_Stacja[uid] ), NOT ISBLANK ( CALCULATE ( MAX ( D_Stacja[rank_6_10] ) ) ) ),
+			    "h", CALCULATE ( [Sloty puste], D_Data[CzyRoboczy] = TRUE (), D_Godzina[Okno] = "Rano 6–10" ) )
+			VAR n = ROUNDUP ( COUNTROWS ( t ) * 0.15, 0 )
+			RETURN DIVIDE ( SUMX ( TOPN ( n, t, [h], DESC ), [h] ), SUMX ( t, [h] ) )
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 93e1efde-f439-4939-a09a-d6b184fac6a2
+
+	measure 'KPI6 Pusta 16-20 %' =
+			
+			CALCULATE ( [Czas pustej %], D_Data[CzyRoboczy] = TRUE (), D_Godzina[Okno] = "Popołudnie 16–20" )
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 7ff12ade-1d2c-442c-85fc-87bcdd754e49
+
+	measure 'KPI9 Przepelnienie %' = DIVIDE ( SUM ( F_StanStacji[over_slots] ), [Sloty] )
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: d593b145-17e2-4c5a-8a2a-6b5c22aaa594
+
+	measure 'Cel KPI1' = 0.7 * CALCULATE ( [KPI1 Pusta rano top20 %], REMOVEFILTERS ( D_Data ) )
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 74e74d80-0f0f-41dc-a535-5db993b945ba
+
+	measure 'Rowery przy imprezie' =
+			
+			VAR _maxDist = [Dystans max — wartość]
+			VAR _loc = VALUES ( F_Imprezy[Location_ID] )
+			VAR _stacje =
+			    CALCULATETABLE (
+			        VALUES ( B_LokalizacjaStacja[uid] ),
+			        TREATAS ( _loc, B_LokalizacjaStacja[Location_ID] ),
+			        B_LokalizacjaStacja[distance_m] <= _maxDist
+			    )
+			RETURN
+			    CALCULATE (
+			        AVERAGE ( F_StanStacji[avg_bikes] ),
+			        TREATAS ( _stacje, D_Stacja[uid] ),
+			        TREATAS ( VALUES ( F_Imprezy[date] ), D_Data[Date] )
+			    )
+		formatString: 0.0
+		lineageTag: 1883bd84-bb43-478d-91b7-4c07dcb00d4b
+
+	measure 'Rowery event' = AVERAGE ( F_ImprezaEfekt[avg_bikes_event] )
+		formatString: 0.0
+		lineageTag: 1ad87464-04df-467d-97fb-85a0ee901fce
+
+	measure 'Rowery kontrola' = AVERAGE ( F_ImprezaEfekt[avg_bikes_control] )
+		formatString: 0.0
+		lineageTag: bcae2445-9586-4e39-bae4-e092ecb791c4
+
+	measure 'Efekt imprezy' = [Rowery event] - [Rowery kontrola]
+		formatString: 0.0
+		lineageTag: ea2c7620-3498-4674-9f5c-30ebfcb5200d
+
+	measure 'Stacje w promieniu' =
+			
+			IF (
+			    HASONEVALUE ( F_Imprezy[Location_ID] ),
+			    VAR _maxDist = [Dystans max — wartość]
+			    VAR _loc = VALUES ( F_Imprezy[Location_ID] )
+			    RETURN
+			        COUNTROWS (
+			            CALCULATETABLE (
+			                VALUES ( B_LokalizacjaStacja[uid] ),
+			                TREATAS ( _loc, B_LokalizacjaStacja[Location_ID] ),
+			                B_LokalizacjaStacja[distance_m] <= _maxDist
+			            )
+			        )
+			)
+		formatString: 0
+		lineageTag: 3c5db931-84a9-4b0b-aaad-9e922f71edb4
+
+	measure 'Najbliższa stacja m' =
+			
+			IF (
+			    HASONEVALUE ( F_Imprezy[Location_ID] ),
+			    CALCULATE (
+			        MIN ( B_LokalizacjaStacja[distance_m] ),
+			        TREATAS ( VALUES ( F_Imprezy[Location_ID] ), B_LokalizacjaStacja[Location_ID] )
+			    )
+			)
+		lineageTag: 01ab95f2-6b87-4336-93a9-6def21e95357
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Value
+		formatString: 0
+		lineageTag: db5c06aa-d4d6-46db-acce-4307cb08ff69
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Miary = calculated
+		mode: import
+		source = { BLANK () }
+
+	annotation PBI_Id = dc0335c17b3a48e4a43927bad0d1896a
+

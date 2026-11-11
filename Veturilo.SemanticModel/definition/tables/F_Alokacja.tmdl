@@ -1,0 +1,42 @@
+table F_Alokacja
+	lineageTag: 5609e5f7-9801-4c96-b823-7b926b173e3e
+
+	column budget
+		dataType: int64
+		formatString: 0
+		lineageTag: 82ca5e7e-e7ff-4e02-846e-35f6c8ffe82d
+		summarizeBy: sum
+		sourceColumn: budget
+
+		annotation SummarizationSetBy = Automatic
+
+	column uid
+		dataType: int64
+		formatString: 0
+		lineageTag: 1cda398c-2049-4f27-9626-b891385964e9
+		summarizeBy: none
+		sourceColumn: uid
+
+		annotation SummarizationSetBy = Automatic
+
+	column extra_bikes
+		dataType: int64
+		formatString: 0
+		lineageTag: c3fcb9b8-40a0-4fa0-8527-0fd027cd1cf8
+		summarizeBy: sum
+		sourceColumn: extra_bikes
+
+		annotation SummarizationSetBy = Automatic
+
+	partition F_Alokacja = m
+		mode: import
+		source =
+				let
+				    Źródło = Parquet.Document(File.Contents("C:\Users\micro\Desktop\Projekt_Veturilo_PowerBI\dane\model\F_Alokacja.parquet"), [Compression=null, MaxDepth=null])
+				in
+				    Źródło
+
+	annotation PBI_NavigationStepName = Nawigacja
+
+	annotation PBI_ResultType = Table
+

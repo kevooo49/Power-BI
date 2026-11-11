@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Veturilo"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "013276de-50a8-4fb8-9a07-5e87806b55f3"
+  }
+}

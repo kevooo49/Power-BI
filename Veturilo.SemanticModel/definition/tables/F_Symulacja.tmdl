@@ -1,0 +1,72 @@
+table F_Symulacja
+	lineageTag: 516bdc6f-7685-428a-9d91-24b6f68939f0
+
+	column uid
+		dataType: int64
+		formatString: 0
+		lineageTag: eeea89a5-293d-4587-9338-6bf5392ef383
+		summarizeBy: none
+		sourceColumn: uid
+
+		annotation SummarizationSetBy = Automatic
+
+	column extra_bikes
+		dataType: int64
+		formatString: 0
+		lineageTag: df2f169f-7a9f-4d93-b293-6c0b9fa192c0
+		summarizeBy: sum
+		sourceColumn: extra_bikes
+
+		annotation SummarizationSetBy = Automatic
+
+	column empty_h_sim
+		dataType: double
+		lineageTag: 13e3b3b9-b032-4789-9116-e4755e2317a6
+		summarizeBy: sum
+		sourceColumn: empty_h_sim
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column empty_h_actual
+		dataType: double
+		lineageTag: 182bcc35-472d-47a7-8a8a-47e3c599f01b
+		summarizeBy: sum
+		sourceColumn: empty_h_actual
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column days
+		dataType: int64
+		formatString: 0
+		lineageTag: e26a819d-ed0e-4453-be47-c3f420d9bdbf
+		summarizeBy: sum
+		sourceColumn: days
+
+		annotation SummarizationSetBy = Automatic
+
+	column stock5_median
+		dataType: double
+		lineageTag: 1c7f431f-8f1d-4d97-a1e7-cffdb2b88908
+		summarizeBy: sum
+		sourceColumn: stock5_median
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition F_Symulacja = m
+		mode: import
+		source =
+				let
+				    Źródło = Parquet.Document(File.Contents("C:\Users\micro\Desktop\Projekt_Veturilo_PowerBI\dane\model\F_Symulacja.parquet"), [Compression=null, MaxDepth=null])
+				in
+				    Źródło
+
+	annotation PBI_NavigationStepName = Nawigacja
+
+	annotation PBI_ResultType = Table
+

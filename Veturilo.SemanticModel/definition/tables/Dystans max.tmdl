@@ -1,0 +1,26 @@
+table 'Dystans max'
+	lineageTag: 6f9a906d-a8e0-4965-80e6-900ff49ba574
+
+	measure 'Dystans max — wartość' = SELECTEDVALUE('Dystans max'[Dystans max], 400)
+		formatString: 0
+		lineageTag: 7160a7d0-2f49-403e-b75b-23cfbce87b1f
+
+	column 'Dystans max'
+		formatString: 0
+		lineageTag: 19acedd9-f825-4524-997a-022afcc753c9
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+	partition 'Dystans max' = calculated
+		mode: import
+		source = GENERATESERIES(100, 1000, 50)
+
+	annotation PBI_Id = 4ab8f3d6564048d5bee6e1f8451007dd
+

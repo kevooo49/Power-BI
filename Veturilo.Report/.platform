@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Veturilo"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "4a1b603c-9017-4d42-a59b-c1b57bc5929c"
+  }
+}

@@ -1,0 +1,34 @@
+model Model
+	culture: pl-PL
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pl-PL
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["SciezkaDane","D_Stacja","D_Komorka","D_Lokalizacja","F_StanStacji","F_Pogoda","F_Imprezy","B_LokalizacjaStacja","F_ImprezaEfekt","F_Symulacja","F_Budzet","F_Alokacja","F_Przejazdy"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table D_Stacja
+ref table D_Komorka
+ref table D_Lokalizacja
+ref table F_StanStacji
+ref table F_Pogoda
+ref table F_Imprezy
+ref table B_LokalizacjaStacja
+ref table F_ImprezaEfekt
+ref table F_Symulacja
+ref table F_Budzet
+ref table F_Alokacja
+ref table F_Przejazdy
+ref table D_Data
+ref table D_Godzina
+ref table _Miary
+ref table 'Dystans max'
+
+ref cultureInfo pl-PL
+

@@ -1,0 +1,117 @@
+table F_StanStacji
+	lineageTag: d384fdd4-1af4-4130-aa51-feaae0c8bb9e
+
+	column uid
+		dataType: int64
+		formatString: 0
+		lineageTag: 972fd298-9417-4dbe-9da9-3487d6c4f615
+		summarizeBy: none
+		sourceColumn: uid
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: aa5417df-ce32-4e3b-a786-f227e8fa44a2
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column hour
+		dataType: int64
+		formatString: 0
+		lineageTag: e7282e47-39d3-47c3-b3ed-9673e33b9c76
+		summarizeBy: none
+		sourceColumn: hour
+
+		annotation SummarizationSetBy = Automatic
+
+	column slots
+		dataType: int64
+		formatString: 0
+		lineageTag: e2af57ae-c08a-4218-82c7-e607b32bfb56
+		summarizeBy: sum
+		sourceColumn: slots
+
+		annotation SummarizationSetBy = Automatic
+
+	column empty_slots
+		dataType: int64
+		formatString: 0
+		lineageTag: a66c6b38-50b7-4da2-a7b7-12af61250171
+		summarizeBy: sum
+		sourceColumn: empty_slots
+
+		annotation SummarizationSetBy = Automatic
+
+	column over_slots
+		dataType: int64
+		formatString: 0
+		lineageTag: a7bce324-03a8-4c59-8c03-e71b942d6b7f
+		summarizeBy: sum
+		sourceColumn: over_slots
+
+		annotation SummarizationSetBy = Automatic
+
+	column avg_bikes
+		dataType: double
+		lineageTag: deceb5e7-3e58-407b-a865-1850b3cbdc26
+		summarizeBy: sum
+		sourceColumn: avg_bikes
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column min_bikes
+		dataType: int64
+		formatString: 0
+		lineageTag: 1c093b6d-7711-4620-a89f-2a44ed0be998
+		summarizeBy: sum
+		sourceColumn: min_bikes
+
+		annotation SummarizationSetBy = Automatic
+
+	column max_bikes
+		dataType: int64
+		formatString: 0
+		lineageTag: 7c6dc170-ed26-4363-88a2-539ee5ec981e
+		summarizeBy: sum
+		sourceColumn: max_bikes
+
+		annotation SummarizationSetBy = Automatic
+
+	column bikes_first
+		dataType: int64
+		formatString: 0
+		lineageTag: 69e60d25-917c-4aac-90c1-aa65a4c49ca1
+		summarizeBy: sum
+		sourceColumn: bikes_first
+
+		annotation SummarizationSetBy = Automatic
+
+	column racks
+		dataType: int64
+		formatString: 0
+		lineageTag: 51cfa8f2-f600-44c6-8487-0733702b4887
+		summarizeBy: sum
+		sourceColumn: racks
+
+		annotation SummarizationSetBy = Automatic
+
+	partition F_StanStacji = m
+		mode: import
+		source =
+				let
+				    Źródło = Parquet.Document(File.Contents("C:\Users\micro\Desktop\Projekt_Veturilo_PowerBI\dane\model\F_StanStacji.parquet"), [Compression=null, MaxDepth=null])
+				in
+				    Źródło
+
+	annotation PBI_NavigationStepName = Nawigacja
+
+	annotation PBI_ResultType = Table
+

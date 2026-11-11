@@ -1,0 +1,43 @@
+table B_LokalizacjaStacja
+	lineageTag: 796e0191-1604-40cf-9eb6-cc08e3dfb833
+
+	column Location_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 2451c6fc-9bb2-4ac6-9dc7-ea6a6b5030dc
+		summarizeBy: none
+		sourceColumn: Location_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column uid
+		dataType: int64
+		formatString: 0
+		lineageTag: d8ca5288-6356-4bf3-be3d-49a764c9a188
+		summarizeBy: none
+		sourceColumn: uid
+
+		annotation SummarizationSetBy = Automatic
+
+	column distance_m
+		dataType: double
+		lineageTag: ae18bb82-4aef-4325-b016-73232fb9982f
+		summarizeBy: sum
+		sourceColumn: distance_m
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition B_LokalizacjaStacja = m
+		mode: import
+		source =
+				let
+				    Źródło = Parquet.Document(File.Contents("C:\Users\micro\Desktop\Projekt_Veturilo_PowerBI\dane\model\B_LokalizacjaStacja.parquet"), [Compression=null, MaxDepth=null])
+				in
+				    Źródło
+
+	annotation PBI_NavigationStepName = Nawigacja
+
+	annotation PBI_ResultType = Table
+

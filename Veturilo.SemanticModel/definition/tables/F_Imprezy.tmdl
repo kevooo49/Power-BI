@@ -1,0 +1,142 @@
+table F_Imprezy
+	lineageTag: 17ae0c61-15b5-4838-ac23-eea057981b22
+
+	column EventID
+		dataType: int64
+		formatString: 0
+		lineageTag: eabbac8e-3b30-4251-a4bf-6f52d3f0b503
+		summarizeBy: none
+		sourceColumn: EventID
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d3a41ba1-b096-459f-83f8-c3435b2c4fbc
+		summarizeBy: none
+		sourceColumn: date
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column time
+		dataType: string
+		lineageTag: 400eef5b-7a53-4401-a03e-d88cfefb8829
+		summarizeBy: none
+		sourceColumn: time
+
+		annotation SummarizationSetBy = Automatic
+
+	column start
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: abfa4147-28b3-4fc6-b10d-4b8c25882dbf
+		summarizeBy: none
+		sourceColumn: start
+
+		annotation SummarizationSetBy = Automatic
+
+	column end
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 1fa8f2e4-41f1-4c01-bc44-cfdfcfdfa0d8
+		summarizeBy: none
+		sourceColumn: end
+
+		annotation SummarizationSetBy = Automatic
+
+	column participants
+		dataType: int64
+		formatString: 0
+		lineageTag: 687c1a6e-edef-4de5-89a5-d7776929cb1e
+		summarizeBy: sum
+		sourceColumn: participants
+
+		annotation SummarizationSetBy = Automatic
+
+	column type
+		dataType: string
+		lineageTag: 2d23a11f-6958-4af3-9927-1b5a430455dd
+		summarizeBy: none
+		sourceColumn: type
+
+		annotation SummarizationSetBy = Automatic
+
+	column info
+		dataType: string
+		lineageTag: 393d2d0d-06d3-41c8-b85a-9ba3af8fbf6e
+		summarizeBy: none
+		sourceColumn: info
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: f965c497-42bf-48e6-891c-3c4bca23ea26
+		summarizeBy: none
+		sourceColumn: Location_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column bad_time
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: f336fa93-4ee9-4d2c-8e42-912882112b68
+		summarizeBy: none
+		sourceColumn: bad_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column in_data_window
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 716688de-7bee-4388-823b-1c0ecf55c6f8
+		summarizeBy: none
+		sourceColumn: in_data_window
+
+		annotation SummarizationSetBy = Automatic
+
+	column StartHour
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: b3aad220-0b3f-4542-81ec-9c1ab41b851a
+		summarizeBy: none
+		sourceColumn: StartHour
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column EndHour
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 9ad62fdb-559b-414e-a959-bd3d63fdbfa9
+		summarizeBy: none
+		sourceColumn: EndHour
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	partition F_Imprezy = m
+		mode: import
+		source =
+				let
+				    Źródło = Parquet.Document(File.Contents("C:\Users\micro\Desktop\Projekt_Veturilo_PowerBI\dane\model\F_Imprezy.parquet"), [Compression=null, MaxDepth=null]),
+				    #"Usunięte imprezy 00:00-01:00." = Table.SelectRows(Źródło, each ([bad_time] = false) and ([in_data_window] = true)),
+				    #"Wstawiono godzinę" = Table.AddColumn(#"Usunięte imprezy 00:00-01:00.", "Godzina", each DateTime.Time([start]), type time),
+				    #"Zmieniono nazwy kolumn" = Table.RenameColumns(#"Wstawiono godzinę",{{"Godzina", "StartHour"}}),
+				    #"Wstawiono godzinę1" = Table.AddColumn(#"Zmieniono nazwy kolumn", "Godzina", each DateTime.Time([end]), type time),
+				    #"Zmieniono nazwy kolumn1" = Table.RenameColumns(#"Wstawiono godzinę1",{{"Godzina", "EndHour"}})
+				in
+				    #"Zmieniono nazwy kolumn1"
+
+	annotation PBI_NavigationStepName = Nawigacja
+
+	annotation PBI_ResultType = Table
+

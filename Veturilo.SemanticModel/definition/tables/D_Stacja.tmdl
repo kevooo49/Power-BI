@@ -1,0 +1,168 @@
+table D_Stacja
+	lineageTag: 3d852915-d257-4bce-ae67-ae635776e9ac
+
+	column uid
+		dataType: int64
+		formatString: 0
+		lineageTag: b8744803-fb93-4d28-9eb9-73bfa892d7b9
+		summarizeBy: none
+		sourceColumn: uid
+
+		annotation SummarizationSetBy = Automatic
+
+	column name
+		dataType: string
+		lineageTag: 4fb73c6b-a701-4c91-abe1-1e351d3fcb1c
+		summarizeBy: none
+		sourceColumn: name
+
+		annotation SummarizationSetBy = Automatic
+
+	column number
+		dataType: int64
+		formatString: 0
+		lineageTag: 9b343a6d-0f7d-458f-ad6a-2fdb98dc26c3
+		summarizeBy: sum
+		sourceColumn: number
+
+		annotation SummarizationSetBy = Automatic
+
+	column lat
+		dataType: double
+		lineageTag: fc4b718b-c6a5-4f34-bdb8-e07901e6b109
+		dataCategory: Latitude
+		summarizeBy: none
+		sourceColumn: lat
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column lon
+		dataType: double
+		lineageTag: 3bb21063-a0a1-4526-bdbf-7a7441b91070
+		dataCategory: Longitude
+		summarizeBy: none
+		sourceColumn: lon
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CellID
+		dataType: int64
+		formatString: 0
+		lineageTag: 3638b309-72d6-4c6f-8037-bbc00bbf89cd
+		summarizeBy: none
+		sourceColumn: CellID
+
+		annotation SummarizationSetBy = Automatic
+
+	column racks
+		dataType: int64
+		formatString: 0
+		lineageTag: 17b5d106-e3fc-4724-bbe6-46b87d3daf27
+		summarizeBy: sum
+		sourceColumn: racks
+
+		annotation SummarizationSetBy = Automatic
+
+	column d_metro_st
+		dataType: double
+		lineageTag: ecfa118e-31f0-4d54-b37d-b327479fba39
+		summarizeBy: sum
+		sourceColumn: d_metro_st
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column d_city_cen
+		dataType: double
+		lineageTag: b3f937e5-07ad-442c-9215-fe8ba3d2b615
+		summarizeBy: sum
+		sourceColumn: d_city_cen
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column d_bus_tram
+		dataType: double
+		lineageTag: dbc8b480-e0f4-4201-96cc-9125ea199c72
+		summarizeBy: sum
+		sourceColumn: d_bus_tram
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column d_railway
+		dataType: double
+		lineageTag: 55764e96-6532-4ffc-966c-ed4026fe0316
+		summarizeBy: sum
+		sourceColumn: d_railway
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column pop_2023
+		dataType: double
+		lineageTag: a4f952b1-1daf-469b-95cb-880f59d54401
+		summarizeBy: sum
+		sourceColumn: pop_2023
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column has_attributes
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d661fb35-7813-4e90-a4a2-6a75e161018d
+		summarizeBy: none
+		sourceColumn: has_attributes
+
+		annotation SummarizationSetBy = Automatic
+
+	column empty_share_6_10
+		dataType: double
+		lineageTag: f0f86708-eb8c-438c-81b1-1a12b9edc01e
+		summarizeBy: sum
+		sourceColumn: empty_share_6_10
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column rank_6_10
+		dataType: int64
+		formatString: 0
+		lineageTag: 3db018e1-7384-45a0-96a8-03530098aa4e
+		summarizeBy: sum
+		sourceColumn: rank_6_10
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_top20
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 6adf39c2-d593-4114-8fbc-75e1abb7a622
+		summarizeBy: none
+		sourceColumn: is_top20
+
+		annotation SummarizationSetBy = Automatic
+
+	partition D_Stacja = m
+		mode: import
+		source =
+				let
+				    Źródło = Parquet.Document(File.Contents("C:\Users\micro\Desktop\Projekt_Veturilo_PowerBI\dane\model\D_Stacja.parquet"), [Compression=null, MaxDepth=null])
+				in
+				    Źródło
+
+	annotation PBI_NavigationStepName = Nawigacja
+
+	annotation PBI_ResultType = Table
+

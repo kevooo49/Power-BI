@@ -1,0 +1,89 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "ca738c90990e1cd2e64a",
+  "position": {
+    "x": 10,
+    "y": 0,
+    "z": 4001,
+    "height": 540,
+    "width": 580,
+    "tabOrder": 4001
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_ImprezaEfekt"
+                    }
+                  },
+                  "Property": "rel_hour"
+                }
+              },
+              "queryRef": "F_ImprezaEfekt.rel_hour",
+              "nativeQueryRef": "rel_hour",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Miary"
+                    }
+                  },
+                  "Property": "Rowery event"
+                }
+              },
+              "queryRef": "_Miary.Rowery event",
+              "nativeQueryRef": "Rowery event"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Miary"
+                    }
+                  },
+                  "Property": "Rowery kontrola"
+                }
+              },
+              "queryRef": "_Miary.Rowery kontrola",
+              "nativeQueryRef": "Rowery kontrola"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Miary"
+                  }
+                },
+                "Property": "Rowery event"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

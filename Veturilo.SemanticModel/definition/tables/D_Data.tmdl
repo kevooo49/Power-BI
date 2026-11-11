@@ -1,0 +1,94 @@
+table D_Data
+	lineageTag: c7c34970-a7a0-4545-9a3d-c29178d8effd
+	dataCategory: Time
+
+	column Date
+		isKey
+		formatString: General Date
+		lineageTag: 03a3acf9-339c-4547-8163-18cfd0834092
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Miesiac
+		lineageTag: 6fd433a1-43f8-44c8-a1f2-16695b21ee41
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Miesiac]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tydzien
+		formatString: 0
+		lineageTag: 96a42f65-8a1a-47da-9e48-8c0800affcf7
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Tydzien]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DzienTygNr
+		formatString: 0
+		lineageTag: 146bae9c-6efa-4e37-97a6-863a781a821f
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [DzienTygNr]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DzienTyg
+		lineageTag: 091f5d70-524e-4dff-ac24-eb86d0745c69
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [DzienTyg]
+		sortByColumn: DzienTygNr
+
+		annotation SummarizationSetBy = Automatic
+
+	column CzySwieto
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: a4c10319-e8ac-4655-94a2-cb0fcb03c139
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [CzySwieto]
+
+		annotation SummarizationSetBy = Automatic
+
+	column CzyRoboczy
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 048f4cd6-275e-4d55-8524-d54368cece81
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [CzyRoboczy]
+
+		annotation SummarizationSetBy = Automatic
+
+	column TypDnia
+		lineageTag: 565755c3-24f2-4cdb-ad1f-d5fd7e587dcd
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [TypDnia]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition D_Data = calculated
+		mode: import
+		source =
+				
+				VAR Swieta = { DATE(2023,6,8), DATE(2023,8,15), DATE(2023,11,1), DATE(2023,11,11) }
+				RETURN
+				ADDCOLUMNS (
+				    CALENDAR ( DATE(2023,5,1), DATE(2023,11,30) ),
+				    "Miesiac", FORMAT ( [Date], "yyyy-MM" ),
+				    "Tydzien", WEEKNUM ( [Date], 21 ),
+				    "DzienTygNr", WEEKDAY ( [Date], 2 ),
+				    "DzienTyg", FORMAT ( [Date], "ddd" ),
+				    "CzySwieto", [Date] IN Swieta,
+				    "CzyRoboczy", WEEKDAY ( [Date], 2 ) <= 5 && NOT ( [Date] IN Swieta ),
+				    "TypDnia", IF ( WEEKDAY ( [Date], 2 ) <= 5 && NOT ( [Date] IN Swieta ), "Roboczy", "Weekend/święto" )
+				)
+
+	annotation PBI_Id = 3619affda5f94076ba82f8bf7e968fe2
+

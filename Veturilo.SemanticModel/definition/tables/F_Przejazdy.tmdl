@@ -1,0 +1,62 @@
+table F_Przejazdy
+	lineageTag: 7d89d2ed-e700-4beb-9433-2b02b165eed5
+
+	column uid
+		dataType: int64
+		formatString: 0
+		lineageTag: 3967f601-eb7b-45a2-918d-c869b2a3bdfa
+		summarizeBy: none
+		sourceColumn: uid
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 4e27a09f-1e76-4748-81e7-0addf94356f8
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column hour
+		dataType: int64
+		formatString: 0
+		lineageTag: 139fec85-0b69-4be3-86e8-3079c5cd7c25
+		summarizeBy: none
+		sourceColumn: hour
+
+		annotation SummarizationSetBy = Automatic
+
+	column departures
+		dataType: int64
+		formatString: 0
+		lineageTag: 91663199-19a2-4c32-ba16-428aeb5abf3f
+		summarizeBy: sum
+		sourceColumn: departures
+
+		annotation SummarizationSetBy = Automatic
+
+	column arrivals
+		dataType: int64
+		formatString: 0
+		lineageTag: e9ea1d14-0f1e-4e70-9bcb-bab69e64c302
+		summarizeBy: sum
+		sourceColumn: arrivals
+
+		annotation SummarizationSetBy = Automatic
+
+	partition F_Przejazdy = m
+		mode: import
+		source =
+				let
+				    Źródło = Parquet.Document(File.Contents("C:\Users\micro\Desktop\Projekt_Veturilo_PowerBI\dane\model\F_Przejazdy.parquet"), [Compression=null, MaxDepth=null])
+				in
+				    Źródło
+
+	annotation PBI_NavigationStepName = Nawigacja
+
+	annotation PBI_ResultType = Table
+

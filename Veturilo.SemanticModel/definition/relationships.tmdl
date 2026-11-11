@@ -1,0 +1,75 @@
+relationship AutoDetected_b47836af-ef28-4f52-a1be-258eee7a061b
+	fromColumn: F_StanStacji.uid
+	toColumn: D_Stacja.uid
+
+relationship AutoDetected_55ae0c48-4a2e-4652-bf3a-ef0e68292ef4
+	crossFilteringBehavior: bothDirections
+	fromColumn: B_LokalizacjaStacja.uid
+	toColumn: D_Stacja.uid
+
+relationship AutoDetected_1457d16c-9a9a-4949-88f1-70427c2f65e1
+	fromColumn: F_Symulacja.uid
+	toColumn: D_Stacja.uid
+
+relationship AutoDetected_d80ecdf0-0314-44bb-a28b-d0e88fa0e962
+	fromColumn: F_Alokacja.uid
+	toColumn: D_Stacja.uid
+
+relationship AutoDetected_0b83d904-95c8-4539-92af-79347c6b9cf4
+	fromColumn: F_Pogoda.CellID
+	toColumn: D_Komorka.CellID
+
+relationship AutoDetected_1cec75de-aa0d-4a19-973a-625c4a3bcb8a
+	crossFilteringBehavior: bothDirections
+	fromColumn: F_Imprezy.Location_ID
+	toColumn: D_Lokalizacja.Location_ID
+
+relationship AutoDetected_4176d938-3993-42cd-9ed4-3f7a76cc4d57
+	crossFilteringBehavior: bothDirections
+	fromColumn: B_LokalizacjaStacja.Location_ID
+	toColumn: D_Lokalizacja.Location_ID
+
+relationship AutoDetected_3111c3a8-ba04-4940-a642-ec3d145271a4
+	fromColumn: F_ImprezaEfekt.EventID
+	toColumn: F_Imprezy.EventID
+
+relationship AutoDetected_88a3507d-3064-4885-9cac-7eb58a1f5751
+	fromColumn: F_Przejazdy.uid
+	toColumn: D_Stacja.uid
+
+relationship c8be6972-b5b3-907e-8a7f-60e48078304e
+	fromColumn: F_StanStacji.date
+	toColumn: D_Data.Date
+
+relationship 7add7d12-2b44-991f-d35f-f24d9cdeaf3a
+	fromColumn: F_StanStacji.hour
+	toColumn: D_Godzina.Godzina
+
+relationship 960a3a1f-95b3-a968-de0d-17070a563b8a
+	fromColumn: F_Przejazdy.date
+	toColumn: D_Data.Date
+
+relationship b7a8cbb6-29bd-eabe-a8bc-c84fc06c3726
+	fromColumn: F_Przejazdy.hour
+	toColumn: D_Godzina.Godzina
+
+relationship df44cf86-6dee-8e7f-0532-9141df8278c6
+	fromColumn: F_Pogoda.date
+	toColumn: D_Data.Date
+
+relationship 34f2daf4-bf38-834b-5302-48a5b61772ab
+	fromColumn: F_Pogoda.hour
+	toColumn: D_Godzina.Godzina
+
+relationship 54a2e07e-02bc-dd58-eb47-9e56ed2465c9
+	fromColumn: F_Imprezy.date
+	toColumn: D_Data.Date
+
+relationship ac3e77ef-6ec6-5069-0e22-620f1e28458f
+	fromColumn: D_Stacja.CellID
+	toColumn: D_Komorka.CellID
+
+relationship 169423b6-df4e-645c-827b-5cedf1c1174c
+	fromColumn: F_Imprezy.StartHour
+	toColumn: D_Godzina.Godzina
+

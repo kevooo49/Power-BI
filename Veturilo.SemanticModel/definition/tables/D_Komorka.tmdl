@@ -1,0 +1,44 @@
+table D_Komorka
+	lineageTag: 41a7bc99-c06a-4467-ae1e-1f713a2be657
+
+	column CellID
+		dataType: int64
+		formatString: 0
+		lineageTag: 03a1fa5a-8dda-47c3-9938-88b6108d077b
+		summarizeBy: none
+		sourceColumn: CellID
+
+		annotation SummarizationSetBy = Automatic
+
+	column lon
+		dataType: double
+		lineageTag: bf511c44-8b0f-4e42-b442-b8bd2260ee16
+		summarizeBy: sum
+		sourceColumn: lon
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column lat
+		dataType: double
+		lineageTag: 190871c7-6a42-41c5-a440-667f08e96f98
+		summarizeBy: sum
+		sourceColumn: lat
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition D_Komorka = m
+		mode: import
+		source =
+				let
+				    Źródło = Parquet.Document(File.Contents("C:\Users\micro\Desktop\Projekt_Veturilo_PowerBI\dane\model\D_Komorka.parquet"), [Compression=null, MaxDepth=null])
+				in
+				    Źródło
+
+	annotation PBI_NavigationStepName = Nawigacja
+
+	annotation PBI_ResultType = Table
+

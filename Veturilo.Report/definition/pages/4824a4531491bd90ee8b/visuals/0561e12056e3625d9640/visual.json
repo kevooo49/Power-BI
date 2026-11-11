@@ -1,0 +1,139 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "0561e12056e3625d9640",
+  "position": {
+    "x": 590,
+    "y": 0,
+    "z": 3000,
+    "height": 540,
+    "width": 1126.6666666666667,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_Imprezy"
+                    }
+                  },
+                  "Property": "EventID"
+                }
+              },
+              "queryRef": "F_Imprezy.EventID",
+              "nativeQueryRef": "EventID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "D_Lokalizacja"
+                    }
+                  },
+                  "Property": "name"
+                }
+              },
+              "queryRef": "D_Lokalizacja.name",
+              "nativeQueryRef": "name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_Imprezy"
+                    }
+                  },
+                  "Property": "date"
+                }
+              },
+              "queryRef": "F_Imprezy.date",
+              "nativeQueryRef": "date"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Miary"
+                    }
+                  },
+                  "Property": "Efekt imprezy"
+                }
+              },
+              "queryRef": "_Miary.Efekt imprezy",
+              "nativeQueryRef": "Efekt imprezy"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Miary"
+                    }
+                  },
+                  "Property": "Stacje w promieniu"
+                }
+              },
+              "queryRef": "_Miary.Stacje w promieniu",
+              "nativeQueryRef": "Stacje w promieniu"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Miary"
+                    }
+                  },
+                  "Property": "Najbliższa stacja m"
+                }
+              },
+              "queryRef": "_Miary.Najbliższa stacja m",
+              "nativeQueryRef": "Najbliższa stacja m"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Miary"
+                    }
+                  },
+                  "Property": "Rowery przy imprezie"
+                }
+              },
+              "queryRef": "_Miary.Rowery przy imprezie",
+              "nativeQueryRef": "Rowery przy imprezie"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Miary"
+                  }
+                },
+                "Property": "Rowery przy imprezie"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
