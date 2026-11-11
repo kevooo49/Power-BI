@@ -1,4 +1,4 @@
-expression SciezkaDane = "C:\Users\wstas\Studia\studia_semestr_7\Systemy_analizy_biznesowej\Projekt_Veturilo_PowerBI\dane\model\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+expression SciezkaDane = "C:\Users\micro\Desktop\Projekt_Veturilo_PowerBI\dane\model\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
 	lineageTag: ec4ffd80-3708-4299-af7f-a996dc697fd2
 
 	annotation PBI_NavigationStepName = Nawigacja

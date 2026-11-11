@@ -59,7 +59,7 @@ table D_Lokalizacja
 		mode: import
 		source =
 				let
-				    Źródło = Parquet.Document(File.Contents("C:\Users\micro\Desktop\Projekt_Veturilo_PowerBI\dane\model\D_Lokalizacja.parquet"), [Compression=null, MaxDepth=null])
+				    Źródło = Parquet.Document(File.Contents(SciezkaDane & "D_Lokalizacja.parquet"), [Compression=null, MaxDepth=null])
 				in
 				    Źródło
 

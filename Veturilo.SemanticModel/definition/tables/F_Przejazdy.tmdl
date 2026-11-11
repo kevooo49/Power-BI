@@ -52,7 +52,7 @@ table F_Przejazdy
 		mode: import
 		source =
 				let
-				    Źródło = Parquet.Document(File.Contents("C:\Users\micro\Desktop\Projekt_Veturilo_PowerBI\dane\model\F_Przejazdy.parquet"), [Compression=null, MaxDepth=null])
+				    Źródło = Parquet.Document(File.Contents(SciezkaDane & "F_Przejazdy.parquet"), [Compression=null, MaxDepth=null])
 				in
 				    Źródło
 

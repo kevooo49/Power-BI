@@ -127,7 +127,7 @@ table F_Imprezy
 		mode: import
 		source =
 				let
-				    Źródło = Parquet.Document(File.Contents("C:\Users\micro\Desktop\Projekt_Veturilo_PowerBI\dane\model\F_Imprezy.parquet"), [Compression=null, MaxDepth=null]),
+				    Źródło = Parquet.Document(File.Contents(SciezkaDane & "F_Imprezy.parquet"), [Compression=null, MaxDepth=null]),
 				    #"Usunięte imprezy 00:00-01:00." = Table.SelectRows(Źródło, each ([bad_time] = false) and ([in_data_window] = true)),
 				    #"Wstawiono godzinę" = Table.AddColumn(#"Usunięte imprezy 00:00-01:00.", "Godzina", each DateTime.Time([start]), type time),
 				    #"Zmieniono nazwy kolumn" = Table.RenameColumns(#"Wstawiono godzinę",{{"Godzina", "StartHour"}}),
